@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Bernudārzu saraksts</title>
+</head>
+<body>
+<a href="/">Uz galveno lapu</a><br>
+<br>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>VĀRDS</th>
+        <th>ADRESE</th>
+        <th></th>
+    </tr>
+    <tr th:each="bernudarzs : ${bernudarzsList}">
+        <td th:text="${bernudarzs.id}">1</td>
+        <td th:text="${bernudarzs.name}">NoName</td>
+        <td th:text="${bernudarzs.address}">NoAddress</td>
+        <td><a th:href="|/bernudarzs/rinda/${bernudarzs.id}">Rinda</a></td>
+    </tr>
+</table>
+</body>
+</html>

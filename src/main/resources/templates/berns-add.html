@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="|Pievienot bērnu rindai uz ${bernudarzs.name}"></title>
+</head>
+<body>
+<form action="#" th:action="|/bernudarzs/add/${bernudarzs.id}" th:object="${berns}" method="post">
+    <p>
+        Vārds: <input type="text" th:field="*{fName}"/>
+        <span th:if="${#fields.hasErrors('fName')}" th:errors="*{fName}">fName error</span>
+    </p>
+    <p>
+        Uzvārds:
+        <input type="text" th:field="*{lName}"/>
+        <span th:if="${#fields.hasErrors('lName')}" th:errors="*{lName}">lName error</span>
+    </p>
+    <p>
+        Personas kods:
+        <input type="text" th:field="*{persCode}"/>
+        <span th:if="${#fields.hasErrors('persCode')}" th:errors="*{persCode}">persCode error</span>
+    </p>
+    <p>Brālis/māsa tā pašā bernudārzā: <input type="checkbox" th:field="*{brOrSist}"/></p>
+    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+</form>
+<br><br>
+<a href="/">Uz galveno lapu</a><br>
+<a th:href="|/bernudarzs/rinda/${bernudarzs.id}" th:text="|Atpakaļ pie rindas uz ${bernudarzs.name}">Atpakaļ pie rindas</a><br>
+</body>
+</html>

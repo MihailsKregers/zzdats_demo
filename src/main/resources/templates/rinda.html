@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="|Rinda bernudārzā ${bernudarzs.id}"></title>
+</head>
+<body>
+<a href="/">Uz galveno lapu</a><br>
+<a href="/bernudarzs/list">Atpakaļ pie bērnudārzu saraksta</a><br>
+<a th:href="|/bernudarzs/add/${bernudarzs.id}">Pievienot bērnu rindai</a>
+<form action="#" th:action="|/bernudarzs/delete_from_queue/${bernudarzs.id}" th:object="${berns}" method="post">
+    <p>Izņemt no rindas pēc personas koda:</p>
+    <p>Personas kods: <input type="text" th:field="*{persCode}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+<br>
+<table>
+    <tr>
+        <th>VIETA RINDĀ</th>
+        <th>ID</th>
+        <th>VĀRDS</th>
+        <th>UZVĀRDS</th>
+        <th>PERSONAS KODS</th>
+        <th>BRĀLIS/MĀSA</th>
+        <th>PIETEIKSANAS LAIKS</th>
+    </tr>
+    <tr th:each="berns, iter : ${bernsQueue}">
+        <td th:text="${iter.index}"></td>
+        <td th:text="${berns.id}">1</td>
+        <td th:text="${berns.fName}">Gennadijs</td>
+        <td th:text="${berns.lName}">Bukins</td>
+        <td th:text="${berns.persCode}">111111-11111</td>
+        <td th:text="${berns.brOrSist}? yes : no">yes</td>
+        <td th:text="${berns.date}">yes</td>
+
+    </tr>
+</table>
+
+</body>
+</html>

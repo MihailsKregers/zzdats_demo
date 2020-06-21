@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Bernu saraksts</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>FIRST NAME</th>
+        <th>LAST NAME</th>
+        <th>PERSONAL CODE</th>
+        <th>BROTHER/SISTER</th>
+    </tr>
+    <tr th:each="berns : ${bernsList}">
+        <td th:text="${berns.id}">1</td>
+        <td th:text="${berns.fName}">Gennadijs</td>
+        <td th:text="${berns.lName}">Bukins</td>
+        <td th:text="${berns.persCode}">111111-11111</td>
+        <td th:text="${berns.brOrSist}? yes : no">yes</td>
+    </tr>
+</table>
+</body>
+</html>
